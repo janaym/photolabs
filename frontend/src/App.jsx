@@ -15,26 +15,22 @@ const sampleDataForPhotoListItem = {
   profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
 };
 
-let photos = [];
-let i = 0;
-while (i < 3) {
-  const photoItem = sampleDataForPhotoListItem;
-  
-  photoItem.key = i;
-  photos.push(photoItem)
-  i++;
-  console.log(photos)
+
+//make arr of three photo items each with unique key
+let photos_array = [];
+for (const i of [0,1,2]) {
+  const photo_item = sampleDataForPhotoListItem;
+  photo_item.key = i;
+  photos_array.push(<PhotoListItem {...photo_item}/>)
 }
-console.log(photos)
+
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-
-  const photos = new Array (3)
   return (
     <div className="App">
-      <PhotoListItem {...sampleDataForPhotoListItem}/>
-      
+      {photos_array}
+
 
     </div>
   );
