@@ -78,8 +78,7 @@ const PhotoList = () => {
         //photoListItem to render
         return <PhotoListItem key ={photoItem.id}{...photoDetails}/>;
 
-      })};
-      
+      })}
     </ul>
   );
 };
