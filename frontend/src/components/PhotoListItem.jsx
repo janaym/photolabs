@@ -8,7 +8,7 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
   const { location, imageSource, username, profile } = props;
-  console.log(imageSource)
+  
   return (
     <article className="photo-list__item">
       <div className="photo-list__image-container">

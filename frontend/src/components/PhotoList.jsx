@@ -59,13 +59,15 @@ const sampleDataForPhotoList = [
 
 
 
-const PhotoList = () => {
+const PhotoList = (props) => {
+
+  const { photos } = props;
 
   return (
     <ul className="photo-list">
 
       {/* Loop through data */}
-      {sampleDataForPhotoList.map((photoItem) => {
+      {photos.map((photoItem) => {
 
         //props to pass
         const photoDetails = {
