@@ -61,7 +61,7 @@ const sampleDataForPhotoList = [
 
 const PhotoList = (props) => {
 
-  const { photos } = props;
+  const { photos, setFavouritePhotos, favouritePhotos} = props;
 
   return (
     <ul className="photo-list">
@@ -71,6 +71,7 @@ const PhotoList = (props) => {
 
         //props to pass
         const photoDetails = {
+          id: photoItem.id,
           location: photoItem.location,
           imageSource: photoItem.urls.regular,
           username: photoItem.user.username,
@@ -78,7 +79,7 @@ const PhotoList = (props) => {
         };
         
         //photoListItem to render
-        return <PhotoListItem key ={photoItem.id}{...photoDetails}/>;
+        return <PhotoListItem key={photoItem.id} setFavouritePhotos={setFavouritePhotos} favouritePhotos={favouritePhotos} {...photoDetails}/>;
 
       })}
     </ul>

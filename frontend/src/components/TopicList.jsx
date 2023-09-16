@@ -24,7 +24,6 @@ const sampleDataForTopicList = [
 const TopicList = (props) => {
 
   const { topics } = props;
-  console.log(topics)
 
   return (
     <div className="top-nav-bar__topic-list">
