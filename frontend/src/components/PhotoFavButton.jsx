@@ -33,9 +33,11 @@ function PhotoFavButton(props) {
       favPhotosClone.splice(i,1);
       setFavPhotos(favPhotosClone);
     }
-  
+    
+    //change fav button colour
     toggleFav();
 
+    //stop bubbling
     event.stopPropagation();
    
   }
