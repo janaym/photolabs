@@ -14,7 +14,8 @@ function PhotoFavButton(props) {
   
   
 
-  const clickHandler = function() {
+  const clickHandler = function(event) {
+    event.preventDefault;
     
     //clone immutable hook data
     const favPhotosClone = [...favPhotos];
@@ -34,12 +35,14 @@ function PhotoFavButton(props) {
     }
   
     toggleFav();
+
+    event.stopPropagation();
    
   }
 
   return (
     <div className="photo-list__fav-icon">
-      <div onClick={clickHandler} className="photo-list__fav-icon-svg">
+        <div onClick={(event) => {clickHandler(event)}} className="photo-list__fav-icon-svg">
         <FavIcon selected={fav}/>
       </div>
     </div>

@@ -7,10 +7,14 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 const PhotoListItem = (props) => {
+  
+
   const { GlobalState, id, location, imageSource, username, profile } = props;
 
+  const { setIsOpen } = GlobalState;
+  
   return (
-    <article className="photo-list__item">
+    <article className="photo-list__item" onClick={() => {setIsOpen(true)}}>
       <div className="photo-list__image-container">
         <PhotoFavButton GlobalState={GlobalState} id={id}/>
         <img className='photo-list__image' src={imageSource}/>
