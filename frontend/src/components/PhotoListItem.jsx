@@ -7,12 +7,12 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 const PhotoListItem = (props) => {
-  const { setFavouritePhotos,favouritePhotos, id, location, imageSource, username, profile } = props;
+  const { GlobalState, id, location, imageSource, username, profile } = props;
 
   return (
     <article className="photo-list__item">
       <div className="photo-list__image-container">
-        <PhotoFavButton setFavouritePhotos={setFavouritePhotos} favouritePhotos={favouritePhotos} id={id}/>
+        <PhotoFavButton GlobalState={GlobalState} id={id}/>
         <img className='photo-list__image' src={imageSource}/>
       </div>
       <footer className="photo-list__user-details">

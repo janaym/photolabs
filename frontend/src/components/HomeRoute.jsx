@@ -5,13 +5,13 @@ import { useState } from 'react';
 
 const HomeRoute = function (props) {
 
-  const [favouritePhotos, setFavouritePhotos] = useState([]);
+  
 
-  const { photos, topics } = props;
+  const { GlobalState, photos, topics } = props;
   return (
     <div className='home-route'>
       <TopNavigationBar topics={topics} />
-      <PhotoList photos={photos} setFavouritePhotos={setFavouritePhotos} favouritePhotos={favouritePhotos} />
+      <PhotoList photos={photos} GlobalState={GlobalState} />
     </div>
   )
   }

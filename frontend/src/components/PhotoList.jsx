@@ -61,7 +61,7 @@ const sampleDataForPhotoList = [
 
 const PhotoList = (props) => {
 
-  const { photos, setFavouritePhotos, favouritePhotos} = props;
+  const { photos, GlobalState} = props;
 
   return (
     <ul className="photo-list">
@@ -79,7 +79,7 @@ const PhotoList = (props) => {
         };
         
         //photoListItem to render
-        return <PhotoListItem key={photoItem.id} setFavouritePhotos={setFavouritePhotos} favouritePhotos={favouritePhotos} {...photoDetails}/>;
+        return <PhotoListItem key={photoItem.id} GlobalState={GlobalState} {...photoDetails}/>;
 
       })}
     </ul>
