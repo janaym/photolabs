@@ -15,8 +15,6 @@ function PhotoFavButton(props) {
   
 
   const clickHandler = function() {
-
-    console.log('before: ', favPhotos);
     
     //clone immutable hook data
     const favPhotosClone = [...favPhotos];
