@@ -17,40 +17,26 @@ function PhotoFavButton(props) {
   const clickHandler = function() {
 
     console.log('before: ', favPhotos);
-    //check if id is in favPhotos
-    const favPhotosClone = [...favPhotos]
-    console.log("clone:", favPhotosClone);
+    
+    //clone immutable hook data
+    const favPhotosClone = [...favPhotos];
+    
+    //check if id in favPhotos index
     const i = favPhotosClone.indexOf(id);
 
-    if(i<0){
-      console.log('add fav!');
+    //add or remove accordingly
+    if (i < 0){
+      //console.log('add fav!');
       favPhotosClone.push(id);
-      console.log(favPhotosClone, favPhotos)
       setFavPhotos(favPhotosClone);
     } else {
-      console.log('remove fav!')
+      //console.log('remove fav!')
       favPhotosClone.splice(i,1);
-      console.log(favPhotosClone, favPhotos);
       setFavPhotos(favPhotosClone);
     }
-    
-    //setFavPhotos([test])
-    
-
-    // //id not in array
-    // if(i < 0) {
-    //   console.log('adding fav!')
-    //   setFavPhotos(favPhotosClone.push(id));
-    // } else {
-    //   console.log('removing fav!')
-    //   setFavPhotos(favPhotosClone.splice(i,1));
-    // }
-    // console.log('after: ', favPhotos);
   
     toggleFav();
-    
-  
-    
+   
   }
 
   return (
