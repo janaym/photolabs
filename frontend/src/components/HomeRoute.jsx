@@ -10,7 +10,7 @@ const HomeRoute = function (props) {
   const { GlobalState, photos, topics } = props;
   return (
     <div className='home-route'>
-      <TopNavigationBar topics={topics} />
+      <TopNavigationBar topics={topics} GlobalState={GlobalState} />
       <PhotoList photos={photos} GlobalState={GlobalState} />
     </div>
   )
