@@ -1,0 +1,12 @@
+export const unpackPhotoDetails = function(photoItem) {
+  console.log('in the function!')
+  return {
+    id: photoItem.id,
+    location: photoItem.location,
+    imageSource: photoItem.urls.regular,
+    username: photoItem.user.username,
+    profile: photoItem.user.profile
+  };
+  
+}
+

@@ -22,17 +22,20 @@ const App = () => {
   //modal opener
   const [isOpen, setIsOpen] = useState(false);
 
+  const [modalPhoto, setModalPhoto] = useState(undefined);
+
 
   //global state
   const GlobalState = {
     favPhotos, setFavPhotos,
-    isOpen, setIsOpen
+    isOpen, setIsOpen,
+    modalPhoto, setModalPhoto
   }
 
   return (
     <div className="App">
       <HomeRoute GlobalState={GlobalState} photos={photos} topics={topics}/>
-      {isOpen && <PhotoDetailsModal GlobalState={GlobalState}/>}
+      {isOpen && <PhotoDetailsModal GlobalState={GlobalState} photos={photos}/>}
     </div>
   );
 };
