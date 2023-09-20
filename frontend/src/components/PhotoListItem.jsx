@@ -6,19 +6,19 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 
-const PhotoListItem = (props) => {
+const PhotoListItem = ({ GlobalState, photoItem }) => {
   
-
-  const { GlobalState, id, location, imageSource, username, profile } = props;
+  //extract relevant photo info
+  const { id, location, urls, user } = photoItem;
+  const imageSource = urls.regular;
+  const { username, profile } = user; 
 
   const { setIsOpen, setModalPhoto } = GlobalState;
 
   const handlePhotoClick = function(event, id) {
     event.preventDefault;
-    console.log('what was clicked:', event.target, id);
     setIsOpen(true);
     //let the app know which photo was clicked on
-    const currPhoto = 
     setModalPhoto(id);
   }
   

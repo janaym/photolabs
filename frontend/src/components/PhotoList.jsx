@@ -2,7 +2,7 @@ import React from "react";
 
 import "../styles/PhotoList.scss";
 import PhotoListItem from './PhotoListItem';
-import unpackPhotoDetails from '../helpers/unpackPhotoDetails';
+import { unpackPhotoDetails } from '../helpers/unpackPhotoDetails.js';
 
 
 
@@ -16,18 +16,8 @@ const PhotoList = (props) => {
 
       {/* Loop through data */}
       {photos.map((photoItem) => {
-
-       // props to pass
-        const photoDetails = {
-          id: photoItem.id,
-          location: photoItem.location,
-          imageSource: photoItem.urls.regular,
-          username: photoItem.user.username,
-          profile: photoItem.user.profile
-        };
-
         //photoListItem to render
-        return <PhotoListItem key={photoItem.id} GlobalState={GlobalState} {...photoDetails}/>;
+        return <PhotoListItem key={photoItem.id} GlobalState={GlobalState} photoItem={photoItem}/>;
 
       })}
     </ul>

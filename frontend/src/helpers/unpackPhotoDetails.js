@@ -1,5 +1,6 @@
+import React from 'react'
+
 export const unpackPhotoDetails = function(photoItem) {
-  console.log('in the function!')
   return {
     id: photoItem.id,
     location: photoItem.location,
@@ -7,6 +8,6 @@ export const unpackPhotoDetails = function(photoItem) {
     username: photoItem.user.username,
     profile: photoItem.user.profile
   };
-  
+   
 }
 
