@@ -4,11 +4,12 @@ import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoListItem from 'components/PhotoListItem';
 import '../styles/PhotoListItem.scss';
+import PhotoFavButton from 'components/PhotoFavButton';
 
 
 const PhotoDetailsModal = ({ GlobalState, photos }) => {
 
-  const { modalPhoto, setIsOpen } = GlobalState;
+  const { id, modalPhoto, setIsOpen } = GlobalState;
 
   //get info from photo clicked on 
   const { location, urls, user, similar_photos} = photos.find((photo) => photo.id === modalPhoto);
@@ -30,6 +31,7 @@ const PhotoDetailsModal = ({ GlobalState, photos }) => {
 
       <div className='photo-details-modal__images'>
         {/* full size image */}
+        <PhotoFavButton GlobalState={GlobalState} id={id}/>
         <img src={urls.full} className='photo-details-modal__image'/>
 
         {/* photographer details */}
