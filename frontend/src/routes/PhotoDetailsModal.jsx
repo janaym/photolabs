@@ -3,17 +3,17 @@ import React from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoListItem from 'components/PhotoListItem';
-import { unpackPhotoDetails } from '../helpers/unpackPhotoDetails.js';
-
+import '../styles/PhotoListItem.scss';
 
 
 const PhotoDetailsModal = ({ GlobalState, photos }) => {
 
   const { modalPhoto, setIsOpen } = GlobalState;
 
-  //get photo clicked on 
-  const currPhoto = photos.find((photo) => photo.id === modalPhoto);
-  console.log(currPhoto.similar_photos)
+  //get info from photo clicked on 
+  const { location, urls, user, similar_photos} = photos.find((photo) => photo.id === modalPhoto);
+  console.log(Object.values(similar_photos))
+
 
   const handleCloseClick= function(event) {
     event.preventDefault;
@@ -28,8 +28,25 @@ const PhotoDetailsModal = ({ GlobalState, photos }) => {
         
       </button>
 
+      <div className='photo-details-modal__images'>
+        {/* full size image */}
+        <img src={urls.full} className='photo-details-modal__image'/>
 
-    <PhotoListItem GlobalState={GlobalState} photoItem={currPhoto} />
+        {/* photographer details */}
+        <div className='photo-details-modal__header'>
+          <img src={user.profile} className='photo-list__user-profile' />
+          <div className='photo-list__user-info'>
+            <div>{user.username}</div>
+            <div className='photo-list__user-location'>{location.city}, {location.country}</div>
+          </div>
+        </div>
+
+        {/* similar photos */}
+        {/* {Object.values(similar_photos).map} */}
+
+
+      </div>
+      
     
 
     </div>
