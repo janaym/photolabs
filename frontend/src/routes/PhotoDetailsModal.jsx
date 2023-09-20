@@ -42,7 +42,11 @@ const PhotoDetailsModal = ({ GlobalState, photos }) => {
         </div>
 
         {/* similar photos */}
-        {/* {Object.values(similar_photos).map} */}
+        <div className='photo-details-modal__top-bar'>
+          {Object.values(similar_photos).map((photoItem) => {
+          return <PhotoListItem key={photoItem.id} GlobalState={GlobalState}  photoItem={photoItem} />;
+          })}
+        </div>
 
 
       </div>
