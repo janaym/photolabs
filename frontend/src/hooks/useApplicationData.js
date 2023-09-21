@@ -12,13 +12,39 @@ export const useApplicationData = function() {
   //create state update functions
 
   //handle click on photo that opens modal
-  const setPhotoSelected = function(event) {
+  const setPhotoSelected = function(event, id) {
     event.preventDefault;
+    setIsModalOpen(true);
+    setModalPhoto(id);
   }
 
   //handle click on favourite photo button
-  const updateFavPhotoIds = function() {
+  const updateFavPhotoIds = function(event, toggleFav, id) {
+
       event.preventDefault;
+
+    //clone immutable hook data
+    const favPhotosClone = [...favPhotos];
+    
+    //check if id in favPhotos index
+    const i = favPhotosClone.indexOf(id);
+
+    //add or remove accordingly
+    if (i < 0){
+      //console.log('add fav!');
+      favPhotosClone.push(id);
+      setFavPhotos(favPhotosClone);
+    } else {
+      //console.log('remove fav!')
+      favPhotosClone.splice(i,1);
+      setFavPhotos(favPhotosClone);
+    }
+    
+    //change fav button colour
+    toggleFav();
+
+    //stop bubbling
+    event.stopPropagation();
   }
 
   //handles click on modal close button

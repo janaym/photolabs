@@ -10,6 +10,7 @@ import topics from './mocks/topics';
 //import routes
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import { useApplicationData } from 'hooks/useApplicationData';
 
 
 
@@ -17,25 +18,27 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 const App = () => {
   /*----HOOKS----*/
   //favourite tracker
-  const [favPhotos, setFavPhotos] = useState([]);
+  // const [favPhotos, setFavPhotos] = useState([]);
 
-  //modal opener
-  const [isOpen, setIsOpen] = useState(false);
+  // //modal opener
+  // const [isOpen, setIsOpen] = useState(false);
 
-  const [modalPhoto, setModalPhoto] = useState(undefined);
+  // const [modalPhoto, setModalPhoto] = useState(undefined);
 
 
-  //global state
-  const GlobalState = {
-    favPhotos, setFavPhotos,
-    isOpen, setIsOpen,
-    modalPhoto, setModalPhoto
-  }
+  // //global state
+  // const GlobalState = {
+  //   favPhotos, setFavPhotos,
+  //   isOpen, setIsOpen,
+  //   modalPhoto, setModalPhoto
+  // }
+
+  const GlobalContext = useApplicationData();
 
   return (
     <div className="App">
-      <HomeRoute GlobalState={GlobalState} photos={photos} topics={topics}/>
-      {isOpen && <PhotoDetailsModal GlobalState={GlobalState} photos={photos}/>}
+      <HomeRoute GlobalContext={GlobalContext} photos={photos} topics={topics}/>
+      {/* {isOpen && <PhotoDetailsModal GlobalState={GlobalState} photos={photos}/>} */}
     </div>
   );
 };

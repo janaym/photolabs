@@ -6,26 +6,21 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 
-const PhotoListItem = ({ GlobalState, photoItem }) => {
+const PhotoListItem = ({ GlobalContext, photoItem }) => {
   
   //extract relevant photo info
   const { id, location, urls, user } = photoItem;
   const imageSource = urls.regular;
   const { username, profile } = user; 
 
-  const { setIsOpen, setModalPhoto } = GlobalState;
+  //extract needed functions
+  const {setPhotoSelected } = GlobalContext;
 
-  const handlePhotoClick = function(event, id) {
-    event.preventDefault;
-    setIsOpen(true);
-    //let the app know which photo was clicked on
-    setModalPhoto(id);
-  }
   
   return (
-    <article className="photo-list__item" onClick={(event) => handlePhotoClick(event, id)}>
+    <article className="photo-list__item" onClick={(event) => setPhotoSelected(event, id)}>
       <div className="photo-list__image-container">
-        <PhotoFavButton GlobalState={GlobalState} id={id}/>
+        <PhotoFavButton GlobalContext={GlobalContext} id={id}/>
         <img className='photo-list__image' src={imageSource}/>
       </div>
       <footer className="photo-list__user-details">

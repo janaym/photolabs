@@ -7,9 +7,8 @@ import { unpackPhotoDetails } from '../helpers/unpackPhotoDetails.js';
 
 
 
-const PhotoList = (props) => {
+const PhotoList = ({ photos, GlobalContext }) => {
 
-  const { photos, GlobalState} = props;
 
   return (
     <ul className="photo-list">
@@ -17,7 +16,7 @@ const PhotoList = (props) => {
       {/* Loop through data */}
       {photos.map((photoItem) => {
         //photoListItem to render
-        return <PhotoListItem key={photoItem.id} GlobalState={GlobalState} photoItem={photoItem}/>;
+        return <PhotoListItem key={photoItem.id} GlobalContext={GlobalContext} photoItem={photoItem}/>;
 
       })}
     </ul>
