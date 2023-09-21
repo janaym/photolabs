@@ -11,7 +11,7 @@ const HomeRoute = ({GlobalContext, photos, topics}) => {
 
   return (
     <div className='home-route'>
-      {/* <TopNavigationBar topics={topics} GlobalState={GlobalState} /> */}
+      <TopNavigationBar topics={topics} GlobalContext={GlobalContext} /> 
       <PhotoList photos={photos} GlobalContext={GlobalContext} />
     </div>
   );

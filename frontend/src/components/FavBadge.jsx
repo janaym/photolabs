@@ -3,8 +3,8 @@ import FavIcon from './FavIcon';
 
 import '../styles/FavBadge.scss';
 
-const FavBadge = ({ GlobalState }) => {
-  const isFavPhotoExist = GlobalState.favPhotos.length === 0 ? false : true;
+const FavBadge = ({ GlobalContext }) => {
+  const isFavPhotoExist = GlobalContext.state.favPhotos.length === 0 ? false : true;
   return (
     <div className='fav-badge'>
       <FavIcon displayAlert={!!isFavPhotoExist} selected={true}/>

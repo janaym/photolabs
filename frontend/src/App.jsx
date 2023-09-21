@@ -34,11 +34,12 @@ const App = () => {
   // }
 
   const GlobalContext = useApplicationData();
+  console.log(GlobalContext);
 
   return (
     <div className="App">
       <HomeRoute GlobalContext={GlobalContext} photos={photos} topics={topics}/>
-      {/* {isOpen && <PhotoDetailsModal GlobalState={GlobalState} photos={photos}/>} */}
+      {GlobalContext.state.isModalOpen && <PhotoDetailsModal GlobalContext={GlobalContext} photos={photos}/>}
     </div>
   );
 };
