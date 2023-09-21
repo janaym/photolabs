@@ -4,7 +4,7 @@ import '../styles/TopNavigationBar.scss'
 import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 
-const TopNavigation = ({ GlobalContext, topics}) => {
+const TopNavigation = ({ GlobalContext, topics }) => {
 
   return (
     <div className="top-nav-bar">

@@ -7,7 +7,7 @@ const FavBadge = ({ GlobalContext }) => {
   const isFavPhotoExist = GlobalContext.state.favPhotos.length === 0 ? false : true;
   return (
     <div className='fav-badge'>
-      <FavIcon displayAlert={!!isFavPhotoExist} selected={true}/>
+      <FavIcon displayAlert={isFavPhotoExist} selected={true}/>
     </div>
   ) 
   

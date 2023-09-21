@@ -7,30 +7,23 @@ import '../styles/PhotoListItem.scss';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 
-const PhotoDetailsModal = ({ GlobalState, photos }) => {
+const PhotoDetailsModal = ({ GlobalContext, photos }) => {
 
-  const { id, modalPhoto, setIsOpen } = GlobalState;
+  const { state, onCloseModal } = GlobalContext;
 
-  //get info from photo clicked on 
-  const { location, urls, user, similar_photos} = photos.find((photo) => photo.id === modalPhoto);
-
-
-  const handleCloseClick= function(event) {
-    event.preventDefault;
-    setIsOpen(false);
-  }
+  // //get info from photo that was clicked on 
+  const { location, urls, user, similar_photos} = photos.find((photo) => photo.id === state.modalPhoto);
 
   return (
     <div className="photo-details-modal">
-      <button className="photo-details-modal__close-button" onClick={(event) => {handleCloseClick(event)}} >
+      {/* close modal button */}
+      <button className="photo-details-modal__close-button" onClick={(event) => {onCloseModal(event)}} >
         <img src={closeSymbol} alt="close symbol" />
-       
-        
       </button>
 
       <div className='photo-details-modal__images'>
         {/* full size image */}
-        <PhotoFavButton GlobalState={GlobalState} id={id}/>
+        <PhotoFavButton GlobalContext={GlobalContext} id={state.modalPhoto}/>
         <img src={urls.full} className='photo-details-modal__image'/>
 
         {/* photographer details */}
@@ -45,15 +38,10 @@ const PhotoDetailsModal = ({ GlobalState, photos }) => {
         {/* similar photos */}
         <div className='photo-details-modal__top-bar'>
           {Object.values(similar_photos).map((photoItem) => {
-          return <PhotoListItem key={photoItem.id} GlobalState={GlobalState}  photoItem={photoItem} />;
+          return <PhotoListItem key={photoItem.id} GlobalContext={GlobalContext}  photoItem={photoItem} />;
           })}
         </div>
-
-
       </div>
-      
-    
-
     </div>
   )
 };

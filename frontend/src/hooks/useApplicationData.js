@@ -16,12 +16,13 @@ export const useApplicationData = function() {
     event.preventDefault;
     setIsModalOpen(true);
     setModalPhoto(id);
+    console.log(modalPhoto);
   }
 
   //handle click on favourite photo button
   const updateFavPhotoIds = function(event, toggleFav, id) {
 
-      event.preventDefault;
+    event.preventDefault;
 
     //clone immutable hook data
     const favPhotosClone = [...favPhotos];
