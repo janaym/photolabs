@@ -13,7 +13,6 @@ const PhotoDetailsModal = ({ GlobalState, photos }) => {
 
   //get info from photo clicked on 
   const { location, urls, user, similar_photos} = photos.find((photo) => photo.id === modalPhoto);
-  console.log(Object.values(similar_photos))
 
 
   const handleCloseClick= function(event) {
