@@ -16,25 +16,9 @@ import { useApplicationData } from 'hooks/useApplicationData';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  /*----HOOKS----*/
-  //favourite tracker
-  // const [favPhotos, setFavPhotos] = useState([]);
-
-  // //modal opener
-  // const [isOpen, setIsOpen] = useState(false);
-
-  // const [modalPhoto, setModalPhoto] = useState(undefined);
-
-
-  // //global state
-  // const GlobalState = {
-  //   favPhotos, setFavPhotos,
-  //   isOpen, setIsOpen,
-  //   modalPhoto, setModalPhoto
-  // }
 
   const GlobalContext = useApplicationData();
-  console.log(GlobalContext);
+  //console.log(GlobalContext);
 
   return (
     <div className="App">
