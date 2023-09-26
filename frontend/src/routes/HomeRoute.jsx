@@ -11,7 +11,7 @@ const HomeRoute = ({GlobalContext, topics}) => {
 
   return (
     <div className='home-route'>
-      <TopNavigationBar topics={topics} GlobalContext={GlobalContext} /> 
+      <TopNavigationBar GlobalContext={GlobalContext} /> 
       <PhotoList GlobalContext={GlobalContext} />
     </div>
   );

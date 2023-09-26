@@ -1,3 +1,4 @@
+import { getByDisplayValue } from '@testing-library/react';
 import { useReducer, useEffect } from 'react';
 
 const initialState = {
@@ -13,6 +14,7 @@ export const ACTIONS = {
   SET_MODAL_CLOSE: 'SET_MODAL_CLOSE',
   TOGGLE_FAV_PHOTO: 'TOGGLE_FAV_PHOTO',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA'
 }
 
 const reducer = (state, action) => {
@@ -35,7 +37,10 @@ const reducer = (state, action) => {
       return { ...state, favPhotos: favPhotosClone };
 
     case ACTIONS.SET_PHOTO_DATA:
-      return {...state, photoData: action.payload}
+      return {...state, photoData: action.payload};
+    
+    case ACTIONS.SET_TOPIC_DATA:
+      return {...state, topicData: action.payload};
 
     default:
       throw new Error('Tried to reduce with unsupported action type');
@@ -50,6 +55,12 @@ export const useApplicationData = () => {
     fetch('http://localhost:8001/api/photos')
     .then(res => res.json())
     .then(result => dispatch({type: ACTIONS.SET_PHOTO_DATA, payload: result}))
+  }, [])
+
+  useEffect(() => {
+    fetch('http://localhost:8001/api/topics')
+    .then(res => res.json())
+    .then(result => dispatch({type: ACTIONS.SET_TOPIC_DATA, payload: result}))
   }, [])
 
   const setPhotoSelected = (event, id) => {

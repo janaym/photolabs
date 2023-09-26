@@ -9,7 +9,7 @@ const TopNavigation = ({ GlobalContext, topics }) => {
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
-      <TopicList topics={topics} />
+      <TopicList topics={GlobalContext.state.topicData} />
       <FavBadge GlobalContext={GlobalContext} />
     </div>
   )
