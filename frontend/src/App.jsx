@@ -22,8 +22,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute GlobalContext={GlobalContext} photos={photos} topics={topics}/>
-      {GlobalContext.state.isModalOpen && <PhotoDetailsModal GlobalContext={GlobalContext} photos={photos}/>}
+      <HomeRoute GlobalContext={GlobalContext} topics={topics}/>
+      {GlobalContext.state.isModalOpen && <PhotoDetailsModal GlobalContext={GlobalContext}/>}
     </div>
   );
 };

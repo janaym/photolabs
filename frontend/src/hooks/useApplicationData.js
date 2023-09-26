@@ -68,7 +68,7 @@ export const useApplicationData = () => {
   const onCloseModal = (event) => {
     event.preventDefault();
     console.log('closing modal!');
-    dispatch({ type: 'SET_MODAL_CLOSED' });
+    dispatch({ type: 'SET_MODAL_CLOSE' });
   };
 
   return { state, setPhotoSelected, updateFavPhotoIds, onCloseModal };

@@ -7,12 +7,12 @@ import '../styles/PhotoListItem.scss';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 
-const PhotoDetailsModal = ({ GlobalContext, photos }) => {
+const PhotoDetailsModal = ({ GlobalContext }) => {
 
   const { state, onCloseModal } = GlobalContext;
 
   // //get info from photo that was clicked on 
-  const { location, urls, user, similar_photos} = photos.find((photo) => photo.id === state.modalPhoto);
+  const { location, urls, user, similar_photos} = state.photoData.find((photo) => photo.id === state.modalPhoto);
 
   return (
     <div className="photo-details-modal">

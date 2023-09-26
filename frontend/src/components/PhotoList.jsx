@@ -7,14 +7,14 @@ import { unpackPhotoDetails } from '../helpers/unpackPhotoDetails.js';
 
 
 
-const PhotoList = ({ photos, GlobalContext }) => {
+const PhotoList = ({ GlobalContext }) => {
 
 
   return (
     <ul className="photo-list">
 
       {/* Loop through data */}
-      {photos.map((photoItem) => {
+      {GlobalContext.state.photoData.map((photoItem) => {
         //photoListItem to render
         return <PhotoListItem key={photoItem.id} GlobalContext={GlobalContext} photoItem={photoItem}/>;
 

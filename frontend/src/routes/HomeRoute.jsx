@@ -7,12 +7,12 @@ import PhotoList from '../components/PhotoList';
 
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = ({GlobalContext, photos, topics}) => {
+const HomeRoute = ({GlobalContext, topics}) => {
 
   return (
     <div className='home-route'>
       <TopNavigationBar topics={topics} GlobalContext={GlobalContext} /> 
-      <PhotoList photos={photos} GlobalContext={GlobalContext} />
+      <PhotoList GlobalContext={GlobalContext} />
     </div>
   );
 };
