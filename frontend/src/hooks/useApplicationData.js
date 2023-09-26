@@ -51,12 +51,15 @@ const reducer = (state, action) => {
 export const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+
+  //import photos
   useEffect(() => {
     fetch('http://localhost:8001/api/photos')
     .then(res => res.json())
     .then(result => dispatch({type: ACTIONS.SET_PHOTO_DATA, payload: result}))
   }, [])
 
+  //import topics
   useEffect(() => {
     fetch('http://localhost:8001/api/topics')
     .then(res => res.json())
