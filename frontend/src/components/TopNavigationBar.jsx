@@ -4,12 +4,12 @@ import '../styles/TopNavigationBar.scss'
 import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 
-const TopNavigation = ({ GlobalContext, topics }) => {
+const TopNavigation = ({ GlobalContext }) => {
 
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
-      <TopicList topics={GlobalContext.state.topicData} />
+      <TopicList topics={GlobalContext.state.topicData} setSelectedTopic={GlobalContext.setSelectedTopic} />
       <FavBadge GlobalContext={GlobalContext} />
     </div>
   )

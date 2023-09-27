@@ -6,7 +6,8 @@ const initialState = {
   isModalOpen: false,
   modalPhoto: undefined,
   photoData: [],
-  topicData: []
+  topicData: [],
+  //selectedTopic: undefined
 };
 
 export const ACTIONS = {
@@ -14,7 +15,8 @@ export const ACTIONS = {
   SET_MODAL_CLOSE: 'SET_MODAL_CLOSE',
   TOGGLE_FAV_PHOTO: 'TOGGLE_FAV_PHOTO',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
-  SET_TOPIC_DATA: 'SET_TOPIC_DATA'
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
+  SET_SELECTED_TOPIC: 'SET_SELECTED_TOPIC'
 }
 
 const reducer = (state, action) => {
@@ -42,6 +44,9 @@ const reducer = (state, action) => {
     case ACTIONS.SET_TOPIC_DATA:
       return {...state, topicData: action.payload};
 
+    case ACTIONS.SET_SELECTED_TOPIC:
+      return({...state, selectedTopic: action.payload})
+
     default:
       throw new Error('Tried to reduce with unsupported action type');
     
@@ -52,19 +57,34 @@ export const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
 
-  //import photos
-  useEffect(() => {
-    fetch('http://localhost:8001/api/photos')
-    .then(res => res.json())
-    .then(result => dispatch({type: ACTIONS.SET_PHOTO_DATA, payload: result}))
-  }, [])
-
   //import topics
   useEffect(() => {
     fetch('http://localhost:8001/api/topics')
     .then(res => res.json())
     .then(result => dispatch({type: ACTIONS.SET_TOPIC_DATA, payload: result}))
   }, [])
+
+  //import photos. will import from specific topic when clicked
+  useEffect(() => {
+
+    //case: no topic clicked
+    if(!state.selectedTopic) {
+      fetch('http://localhost:8001/api/photos')
+      .then(res => res.json())
+      .then(result => dispatch({type: ACTIONS.SET_PHOTO_DATA, payload: result})); 
+    } 
+    //case: topic clicked
+    else {
+      const topic_id = state.selectedTopic;
+      
+      if(state.selectedTopic) {
+        fetch(`http://localhost:8001/api/topics/photos/${topic_id}`)
+        .then(res => res.json())
+        .then(result => dispatch({type: ACTIONS.SET_PHOTO_DATA, payload: result}))
+      }
+
+    }
+  },[state.selectedTopic])
 
   const setPhotoSelected = (event, id) => {
     event.preventDefault();
@@ -85,7 +105,13 @@ export const useApplicationData = () => {
     dispatch({ type: 'SET_MODAL_CLOSE' });
   };
 
-  return { state, setPhotoSelected, updateFavPhotoIds, onCloseModal };
+  const setSelectedTopic = (event, topic_id) => {
+    event.preventDefault();
+    console.log('setting topic!');
+    dispatch({type: ACTIONS.SET_SELECTED_TOPIC, payload: topic_id });
+  }
+
+  return { state, setPhotoSelected, updateFavPhotoIds, onCloseModal, setSelectedTopic };
 };
 
 

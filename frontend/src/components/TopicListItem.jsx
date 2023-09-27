@@ -8,13 +8,11 @@ const sampleDataForTopicListItem = {
   label: "Nature",
 };
 
-const TopicListItem = (props) => {
-
-  const { title } = props;
+const TopicListItem = ({topic, setSelectedTopic}) => {
 
   return (
-    <div className="topic-list__item">
-      <span>{title}</span>
+    <div className="topic-list__item" onClick={(event) => setSelectedTopic(event, topic.id)}>
+      <span>{topic.title}</span>
     </div>
   );
 };
