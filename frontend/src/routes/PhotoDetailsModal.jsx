@@ -1,21 +1,21 @@
 import React from 'react';
 
-import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoListItem from 'components/PhotoListItem';
-import '../styles/PhotoListItem.scss';
 import PhotoFavButton from 'components/PhotoFavButton';
 
+import '../styles/PhotoDetailsModal.scss'
+import '../styles/PhotoListItem.scss';
 
 const PhotoDetailsModal = ({ GlobalContext }) => {
-
   const { state, onCloseModal } = GlobalContext;
 
-  // //get info from photo that was clicked on 
+  //get info from photo that was clicked on 
   const { location, urls, user, similar_photos} = state.photoData.find((photo) => photo.id === state.modalPhoto);
 
   return (
     <div className="photo-details-modal">
+
       {/* close modal button */}
       <button className="photo-details-modal__close-button" onClick={(event) => {onCloseModal(event)}} >
         <img src={closeSymbol} alt="close symbol" />
@@ -43,7 +43,7 @@ const PhotoDetailsModal = ({ GlobalContext }) => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default PhotoDetailsModal;

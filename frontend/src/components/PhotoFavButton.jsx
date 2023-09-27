@@ -5,14 +5,11 @@ import '../styles/PhotoFavButton.scss';
 import { useFavourite } from 'hooks/useFavourite';
 
 function PhotoFavButton({GlobalContext, id}) {
-
   const [fav, toggleFav] = useFavourite();
 
   //extract needed functions
   const { updateFavPhotoIds } = GlobalContext;
   
-
-
   return (
     <div className="photo-list__fav-icon">
       <div onClick={(event) => {updateFavPhotoIds(event, toggleFav, id)}} className="photo-list__fav-icon-svg">
@@ -20,6 +17,6 @@ function PhotoFavButton({GlobalContext, id}) {
       </div>
     </div>
   );
-}
+};
 
 export default PhotoFavButton;

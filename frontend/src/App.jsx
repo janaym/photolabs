@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
-
+import React from 'react';
 import './App.scss';
 
 //import routes
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+
 import { useApplicationData } from 'hooks/useApplicationData';
 
-
-
-// Note: Rendering a single component to build components in isolation
 const App = () => {
-
+  //import state and state modifying functions
   const GlobalContext = useApplicationData();
-  //console.log(GlobalContext);
+  const isModalOpen = GlobalContext.state.isModalOpen;
 
   return (
     <div className="App">
       <HomeRoute GlobalContext={GlobalContext} />
-      {GlobalContext.state.isModalOpen && <PhotoDetailsModal GlobalContext={GlobalContext}/>}
+      {isModalOpen && <PhotoDetailsModal GlobalContext={GlobalContext}/>}
     </div>
   );
 };
