@@ -9,7 +9,7 @@ A Photo-Sharing app developed for the Lighthouse Labs Web Development course.
 **Favourite Photos**\
 !["Desktop view"](./docs/favourites.png)\
 **Open Photo Expanded View**\
-!['Character counter](./docs/modal.png)\
+!['Character counter](./docs/modal.png)
 
 ## Setup
 

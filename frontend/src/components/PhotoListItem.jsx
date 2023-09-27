@@ -6,7 +6,7 @@ const PhotoListItem = ({ GlobalContext, photoItem }) => {
   
   //extract relevant photo info
   const { id, location, urls, user } = photoItem;
-  const imageSource = urls.regular;
+  const imageSource = urls.full;
   const { username, profile } = user; 
 
   //extract needed functions
