@@ -9,11 +9,12 @@ function PhotoFavButton({GlobalContext, id}) {
 
   //extract needed functions
   const { updateFavPhotoIds } = GlobalContext;
+  const isFavourited = GlobalContext.state.favPhotos.includes(id);
   
   return (
     <div className="photo-list__fav-icon">
       <div onClick={(event) => {updateFavPhotoIds(event, toggleFav, id)}} className="photo-list__fav-icon-svg">
-        <FavIcon selected={fav}/>
+        <FavIcon selected={isFavourited}/>
       </div>
     </div>
   );
